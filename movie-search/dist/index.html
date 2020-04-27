@@ -4,18 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>movie-search</title>
+
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/glide.core.min.css">
 </head>
 <body>
-    <header>
-        
+    <header class="header">
+        <div class="wrapper">
+            <div class="title">
+                <h1>Movie Search</h1>
+                <img class="rotate-scale-up" src="assets/Video-512.png" alt="movie">
+            </div>
+        </div>
     </header>
-    <section>
-
+    <section style="background-color: #F7CAC9;">
+        <div class="wrapper">
+            <div class="search__container">
+                <input class="search__input" type="text" placeholder="Search">
+                <span class="keyboard"></span>
+                <button class="search__button"></button>
+            </div>
+        </div>
     </section>
-    <footer>
-
+    <section style="background-color: #F7CAC9;">
+        <div class="wrapper">
+            <div class="glide">
+                <div class="glide__track" data-glide-el="track">
+                  <ul class="glide__slides">
+                    <li class="glide__slide">0</li>
+                    <li class="glide__slide">1</li>
+                    <li class="glide__slide">2</li>
+                  </ul>
+                </div>
+                <div class="glide__arrows" data-glide-el="controls">
+                    <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
+                    <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
+                  </div>
+              </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="wrapper">
+         <div class="footer-inner">
+            <div class="rs-logo"><a href="https://rs.school/">RS2020Q1</a></div>
+            <div class="git-logo"><img src="assets/github-image.svg" alt="github"><a href="https://github.com/Gabriellji">Gabriellji</a></div>
+         </div>
+        </div>
     </footer>
-    
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+    <script>
+        new Glide('.glide').mount()
+      </script>
 </body>
 </html>
