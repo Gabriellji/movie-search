@@ -6,7 +6,12 @@
     margin: 0;
     padding: 0;
     }
-    
+
+    main {
+        background: linear-gradient(to bottom, #ff9999 0%, #ff99cc 100%);
+        min-height: 83vh;
+    }
+
     .header {
         background: black;
     }
@@ -15,16 +20,51 @@
         max-width:1320px;
         align-items:center;
         margin:0 auto;
-        padding:10px;
+        padding: 10px 20px;
     }
 
     .title {
         display: flex;
         justify-content: center;
         color: #ffff;
-        min-height: 100px;
+        /* min-height: 100px; */
         align-items: center;
     }
+ 
+    .title h1 {
+        transition: all 3s;
+    }
+
+    .tracking-in-expand {
+        -webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+                animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+    }
+
+    @-webkit-keyframes tracking-in-expand {
+        0% {
+          letter-spacing: -0.5em;
+          opacity: 0;
+        }
+        40% {
+          opacity: 0.6;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      @keyframes tracking-in-expand {
+        0% {
+          letter-spacing: -0.5em;
+          opacity: 0;
+        }
+        40% {
+          opacity: 0.6;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      
 
     .rotate-scale-up {
     width: 50px;
@@ -146,18 +186,165 @@
         background-position: center;
 
         border: 1px solid #575756;
-        background-color: transparent;
+        background-color: #eb6f99;
         transition: all .25s;
     }
 
-    .search__button:active {
-        width: 70px;
+    .jello-horizontal:active {
+        -webkit-animation: jello-horizontal 0.9s both;
+                animation: jello-horizontal 0.9s both;
     }
 
+    @-webkit-keyframes jello-horizontal {
+        0% {
+          -webkit-transform: scale3d(1, 1, 1);
+                  transform: scale3d(1, 1, 1);
+        }
+        30% {
+          -webkit-transform: scale3d(1.25, 0.75, 1);
+                  transform: scale3d(1.25, 0.75, 1);
+        }
+        40% {
+          -webkit-transform: scale3d(0.75, 1.25, 1);
+                  transform: scale3d(0.75, 1.25, 1);
+        }
+        50% {
+          -webkit-transform: scale3d(1.15, 0.85, 1);
+                  transform: scale3d(1.15, 0.85, 1);
+        }
+        65% {
+          -webkit-transform: scale3d(0.95, 1.05, 1);
+                  transform: scale3d(0.95, 1.05, 1);
+        }
+        75% {
+          -webkit-transform: scale3d(1.05, 0.95, 1);
+                  transform: scale3d(1.05, 0.95, 1);
+        }
+        100% {
+          -webkit-transform: scale3d(1, 1, 1);
+                  transform: scale3d(1, 1, 1);
+        }
+      }
+      @keyframes jello-horizontal {
+        0% {
+          -webkit-transform: scale3d(1, 1, 1);
+                  transform: scale3d(1, 1, 1);
+        }
+        30% {
+          -webkit-transform: scale3d(1.25, 0.75, 1);
+                  transform: scale3d(1.25, 0.75, 1);
+        }
+        40% {
+          -webkit-transform: scale3d(0.75, 1.25, 1);
+                  transform: scale3d(0.75, 1.25, 1);
+        }
+        50% {
+          -webkit-transform: scale3d(1.15, 0.85, 1);
+                  transform: scale3d(1.15, 0.85, 1);
+        }
+        65% {
+          -webkit-transform: scale3d(0.95, 1.05, 1);
+                  transform: scale3d(0.95, 1.05, 1);
+        }
+        75% {
+          -webkit-transform: scale3d(1.05, 0.95, 1);
+                  transform: scale3d(1.05, 0.95, 1);
+        }
+        100% {
+          -webkit-transform: scale3d(1, 1, 1);
+                  transform: scale3d(1, 1, 1);
+        }
+      }
+      
+
     .search__button:hover {
-        background-color: #eb6f99;
+        background-color: #ffe7e7;
         background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
     }
+
+    .not-found_layout {
+        display: none;
+    }
+
+    .not-found_title {
+        display: flex;
+        justify-content: center;
+    }
+
+    .not-found_layout p, span{
+        font-size: 25px;
+        font-weight: 600;
+    }
+
+    .quotes {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        font-size: 20px;
+        font-weight: 600;
+        transition: all .25s;
+        margin-bottom: 40px;
+    }
+
+    .tracking-out-contract:hover {
+        -webkit-animation: tracking-out-contract 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+                animation: tracking-out-contract 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    }
+
+    @-webkit-keyframes tracking-out-contract {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          letter-spacing: -0.5em;
+          opacity: 0;
+        }
+      }
+      @keyframes tracking-out-contract {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          letter-spacing: -0.5em;
+          opacity: 0;
+        }
+      }
+      
+      .tracking-in-expand {
+        -webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+                animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+    }
+
+    @-webkit-keyframes tracking-in-expand {
+        0% {
+          letter-spacing: -0.5em;
+          opacity: 0;
+        }
+        40% {
+          opacity: 0.6;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      @keyframes tracking-in-expand {
+        0% {
+          letter-spacing: -0.5em;
+          opacity: 0;
+        }
+        40% {
+          opacity: 0.6;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
 
     .footer {
         background: black;
@@ -166,6 +353,7 @@
     .footer-inner {
         display: flex;
         justify-content: space-between;
+        padding: 20px;
     }
 
     .footer-inner>div {
@@ -183,5 +371,5 @@
     .footer-inner a {
        text-decoration: none;
        color: #ffff;
-    }
+    } 
     

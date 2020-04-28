@@ -33,7 +33,10 @@ module.exports = (env, options) => {
 							loader: 'file-loader',
 						},
 					],
-				},
+				},{
+					test: /.css$/i,
+					use: ['style-loader', 'css-loader'],
+				  },
 			],
 		},
 
