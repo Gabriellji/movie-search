@@ -1,0 +1,65 @@
+.glide {
+    max-width: 1220px;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.glide__track {
+    margin-left: 20px;
+    margin-top: 50px;
+    margin-bottom: 50px
+}
+
+.glide__arrows {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    left: -9px;
+}
+
+.slider__arrow {
+    width: 30px;
+    height: 30px;
+    margin-top: -9px;
+    border-radius: 50%;
+    border: none;
+    background-color: #eb6f99;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    -webkit-box-shadow: 0 0.5rem 4rem 0 rgba(0,0,0,.5);
+    box-shadow: 0 0.5rem 4rem 0 rgba(0,0,0,.5);
+}
+
+.slider__arrow:focus {
+    outline: none;
+    padding: 0;
+    border: none;
+}
+
+.slider__arrow--next {
+    right: 1.5rem;
+}
+
+.glide__bullets {
+    user-select: none;
+    display: flex;
+    justify-content: center;
+}
+
+.glide__bullet {
+    width: 9px;
+    height: 9px;
+    padding: 0;
+    margin-right: 5px;
+    border-radius: 50%;
+}
+
+.movie__box {
+    border: 1px solid black;
+    width: 80%;
+    height: 350px;
+
+}

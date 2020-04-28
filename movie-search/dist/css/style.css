@@ -69,6 +69,7 @@
 
     .search__container {
         display: flex;
+        margin-top: 15px;
     }
 
     .search__title {
@@ -107,7 +108,7 @@
         letter-spacing: 1.5px;
     }
 
-    placeholder:hover,:focus {
+    .search__input placeholder:hover,:focus {
         padding: 12px 0;
         outline: 0;
         border: 1px solid transparent;
