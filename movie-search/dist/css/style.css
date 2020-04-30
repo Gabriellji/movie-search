@@ -7,9 +7,20 @@
     padding: 0;
     }
 
+    body {
+      /* background: linear-gradient(to bottom, #800000 0%, #cc0000 100%); */
+      /* background: linear-gradient(to bottom, #ffe7e7 0%, #bb810c 100%); */
+          background: linear-gradient(to bottom, #000000 0%, #6e1010 100%);
+    }
+
     main {
-        background: linear-gradient(to bottom, #ff9999 0%, #ff99cc 100%);
-        min-height: 83vh;
+        /* background: linear-gradient(to bottom, #ff9999 0%, #ff99cc 100%); */
+        background-image: url(../assets/1.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      
+        min-height: calc(100vh - 189px);
     }
 
     .header {
@@ -131,15 +142,19 @@
         
         color: #575756;
         background-color: transparent;
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+        background-image: url(../assets/interface.svg);
+        /* background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E"); */
         background-repeat: no-repeat;
-        background-size: 18px 18px;
+        /* background-size: 18px 18px; */
+        background-size: 14px 14px;
         background-position: 95% center;
         border-radius: 50px;
-        border: 1px solid #575756;
-        transition: all 250ms ease-in-out;
+        border: 1px solid transparent;
+        /* border: 1px solid #575756; */
+        transition: all .25s ease-in-out;
         backface-visibility: hidden;
         transform-style: preserve-3d;
+        box-shadow: 0px 0px 30px #fff0, 0px 0px 20px #ffffff9c;
     }
 
     .search__input::placeholder {
@@ -148,17 +163,22 @@
         letter-spacing: 1.5px;
     }
 
-    .search__input placeholder:hover,:focus {
+    .search__input placeholder:hover,:focus{
         padding: 12px 0;
         outline: 0;
         border: 1px solid transparent;
         border-bottom: 1px solid #575756;
         border-radius: 0;
         background-position: 100% center;
+        box-shadow: 0px 0px 15px #fff0, 0px 0px 17px #fff0;
     }
+/* 
+    .search__input placeholder:focus,:hover{
+      box-shadow: 0px 0px 30px #fff, 0px 0px 27px #ffffff;
+    } */
 
-    .keyboard {
-        background-image: url(../assets/keyboard.svg);
+    .keyboard-button {
+        background-image: url(../assets/computer.svg);
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -168,7 +188,7 @@
         transition: all .25s;
     }
     
-    .keyboard:hover {
+    .keyboard-button:hover {
         filter: invert(1);
     }
 
@@ -186,7 +206,7 @@
         background-position: center;
 
         border: 1px solid #575756;
-        background-color: #eb6f99;
+        background-color: hsl(4, 67%, 52%);
         transition: all .25s;
     }
 
@@ -258,12 +278,13 @@
       
 
     .search__button:hover {
-        background-color: #ffe7e7;
+        background-color: hsla(4, 100%, 57%, 0.82);
         background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
     }
 
     .not-found_layout {
-        display: none;
+        visibility: hidden;
+        justify-content: center;
     }
 
     .not-found_title {
@@ -272,7 +293,7 @@
     }
 
     .not-found_layout p, span{
-        font-size: 25px;
+        font-size: 20px;
         font-weight: 600;
     }
 
@@ -284,6 +305,7 @@
         font-weight: 600;
         transition: all .25s;
         margin-bottom: 40px;
+        text-shadow: 0px 0px 26px #fff, 0px 0px 25px #fff;
     }
 
     .tracking-out-contract:hover {
@@ -373,3 +395,8 @@
        color: #ffff;
     } 
     
+    @media (max-width: 650px) {
+      .keyboard-button {
+          display: none;
+      }
+  }

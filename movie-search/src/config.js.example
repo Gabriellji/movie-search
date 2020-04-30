@@ -1,0 +1,4 @@
+export default {
+    apikey: '',
+    apiUrl: 'http://www.omdbapi.com'
+}

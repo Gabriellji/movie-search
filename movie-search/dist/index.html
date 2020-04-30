@@ -7,13 +7,15 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/slider.css">
     <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/keyboard.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <header class="header">
         <div class="wrapper">
             <div class="title">
                 <h1 class="tracking-in-expand">Movie Search</h1>
-                <img class="rotate-scale-up" src="assets/Video-512.png" alt="movie">
+                <img class="rotate-scale-up" src="assets/film.svg" alt="movie">
             </div>
         </div>
     </header>
@@ -21,25 +23,35 @@
     <section >
         <div class="wrapper">
             <div class="search__container">
-                <input class="search__input" type="text" placeholder="Search">
-                <span class="keyboard jello-horizontal"></span>
+                <input class="search__input use-keyboard-input" type="text" placeholder="Search">
+                <span class="keyboard-button jello-horizontal"></span>
                 <button class="search__button jello-horizontal"></button>
             </div>
         </div>
     </section>
     <section>
         <div class="wrapper">
+          <div class="not-found_layout">
+            <div class="not-found_title">
+              <p>No results for "<span class="no-result"></span>" </p>
+            </div>
+          </div>
             <div class="glide">
                 <div class="glide__track" data-glide-el="track">
                   <ul class="glide__slides">
-                    <li class="glide__slide">
+                    <!-- <li class="glide__slide">
+                      <div class="box">
+                      <a class="movie-link" href="#">Title</a>
                         <div class="movie__box">lalalal</div>
+                        <p class="movie-year">2000</p>
+                        <span class="movie-rating">8.8</span>
+                      </div>
                     </li>
                     <li class="glide__slide"><div class="movie__box">dzfgdg</div></li> 
                     <li class="glide__slide"><div class="movie__box">zdfzdf</div></li>
                     <li class="glide__slide"><div class="movie__box"></div></li>
                     <li class="glide__slide"><div class="movie__box"></div></li>
-                    <li class="glide__slide"><div class="movie__box"></div></li>
+                    <li class="glide__slide"><div class="movie__box"></div></li> -->
                   </ul>
                 </div>
               
@@ -66,11 +78,6 @@
                       </button>
                     </div>
               </div> 
-             <div class="not-found_layout">
-                <div class="not-found_title">
-                  <p>No results for "<span class="no-result"></span>" </p>
-                </div>
-              </div>
               <div class="quotes tracking-out-contract">
                 <p>“Cinema is the ultimate pervert art. It doesn't give you what you desire - it tells you how to desire.”</p>
               </div>
