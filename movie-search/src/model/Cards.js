@@ -23,7 +23,7 @@ class Cards {
 						.then((res) => {
 							this.list[i] = res;
 							this.downloaded(result.Search.length);
-							this.getRating(result.Search[i].imdbID);
+							// this.getRating(result.Search[i].imdbID);
 							// this.getLink(result.Search[i].imdbID);
 						});
 				}
@@ -37,18 +37,17 @@ class Cards {
 		}
 	}
 
-	getRating(imdbID) {
-		const url = `${this.url}?i=${imdbID}&apikey=${this.key}`;
-		return fetch(url)
-			.then((res) => res.json())
-			.then((data) => {
-				const movie = data;
+	// getRating(imdbID) {
+	// 	const url = `${this.url}?i=${imdbID}&apikey=${this.key}`;
+	// 	return fetch(url)
+	// 		.then((res) => res.json())
+	// 		.then((data) => {
+	// 			const movie = data;
 
-				// const imdb = Number(imdbID);
-				console.log(movie);
-				return movie.imdbRating;
-			});
-	}
+	// 			// const imdb = Number(imdbID);
+	// 			return movie.imdbRating;
+	// 		});
+	// }
 
 	// getLink(title, imdbID) {
 	// 	const url = `${this.movieUrl}?s=${title}?i=${imdbID}`;
@@ -66,7 +65,3 @@ class Cards {
 Object.assign(Cards.prototype, eventMixin);
 
 export default Cards;
-
-
-//годня, в 19:44
-//@Gabriellji (@Gabriellji) https://www.imdb.com/title/ + id по которому искали рейтинг фильма/

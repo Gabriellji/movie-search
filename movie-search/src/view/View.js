@@ -72,13 +72,15 @@ class View {
 	}
 
 	drawCards(arrayCards) {
+		this.slidesContainer.innerHTML = '';
+
 		arrayCards.forEach(({
 			Title, Year, imdbRating, Poster, imdbID,
 		}) => {
 			this.drawCard(Title, Year, imdbRating, Poster, imdbID);
 		});
 		const confi = {
-			type: 'carousel',
+			// type: 'carousel',
 			animationDuration: 600,
 			animationTimingFunc: 'linear',
 			perView: 4,
