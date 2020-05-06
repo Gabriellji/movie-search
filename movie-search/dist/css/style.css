@@ -127,19 +127,19 @@
 
         background-color: transparent;
         transition: transform 250ms ease-in-out;
-        font-size: 14px;
+        font-size: 16px;
         line-height: 18px;
         
         color: #ffffff;
         background-color: transparent;
-        background-image: url(../assets/interface.svg);
+        /* background-image: url(../assets/interface.svg); */
         /* background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E"); */
         background-repeat: no-repeat;
         /* background-size: 18px 18px; */
         background-size: 14px 14px;
         background-position: 95% center;
         border-radius: 50px;
-        border: 3px solid #f443364f;
+        border: 2px solid #f44336a3;
         /* border: 1px solid #575756; */
         transition: all .25s ease-in-out;
         backface-visibility: hidden;
@@ -157,10 +157,31 @@
         padding: 12px 0;
         outline: 0;
         border: 1px solid transparent;
-        border-bottom: 3px solid #f443364f;
+        border-bottom: 3px solid #f44336a3;
         border-radius: 0;
         background-position: 100% center;
         box-shadow: 0px 0px 15px #fff0, 0px 0px 17px #fff0;
+    }
+
+    .clear {
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+      align-self: center;
+      margin-right: 10px;
+    }
+
+    #Layer_1 {
+      fill: #d32e22;
+      transition: all .25s;
+    }
+
+    #Layer_1:hover{
+      fill: #FF9800;
+    }
+
+    #Layer_1:active{
+      fill: #fff;
     }
 /* 
     .search__input placeholder:focus,:hover{
@@ -281,30 +302,102 @@
       }
 
     .not-found_layout {
-        visibility: hidden;
-        justify-content: center;
+      display: flex;
+      min-height: 23px;
+      justify-content: center;
     }
 
     .not-found_title {
-        display: flex;
-        justify-content: center;
+      display: none;
+      justify-content: center;
     }
 
-    .not-found_layout p, span{
-        font-size: 20px;
-        font-weight: 600;
+    .not-found_layout .search-result {
+      font-size: 20px;
+      color: #fff;
     }
+
+    span {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .spinner-main {
+      display: none;
+    }
+
+    .spinner__box {
+      display: flex;
+      flex-direction: column;
+  }
+
+  .lds-ellipsis {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 0px;
+  }
+  .lds-ellipsis div {
+    position: absolute;
+    top: 33px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #fff;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  }
+  .lds-ellipsis div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(3) {
+    left: 32px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(4) {
+    left: 56px;
+    animation: lds-ellipsis3 0.6s infinite;
+  }
+  @keyframes lds-ellipsis1 {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes lds-ellipsis3 {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+  @keyframes lds-ellipsis2 {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(24px, 0);
+    }
+  }
 
     .quotes {
         margin-top: 30px;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        font-size: 1.5em;
+        font-size: 1.3em;
         font-weight: 600;
         transition: all .25s;
         margin-bottom: 40px;
         align-items: center;
+        text-align: center;
     }
 
     .quotes__text {
@@ -376,7 +469,7 @@
     }
 
     @media (max-width: 500px) {
-        .rotate-scale-up {
+        .rotate-center {
             display: none;
         }
     }

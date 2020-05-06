@@ -12,12 +12,44 @@ class View {
 		this.slideList = document.querySelector('.glide__slide');
 		this.imageBox = document.querySelector('.movie__box');
 		this.keyboard = Keyboard;
+
+		this.sliderConfi = {
+			// type: 'carousel',
+			animationDuration: 400,
+			animationTimingFunc: 'linear',
+			perView: 4,
+			breakpoints: {
+				1280: {
+					perView: 3,
+				},
+				900: {
+					perView: 2,
+				},
+				630: {
+					perView: 1,
+				},
+			},
+		};
+
+
+		this.slider = new Glide('.glide', this.sliderConfi).mount();
+		this.slider.on('run.end', (() => this.emit('page-end')));
+		// this.slider.on('move.after', (e) => console.log('move.after', e));
+		// this.slider.on('translate.jump', (e) => console.log('translate.jump', e));
+
+
 		this.keyboard.init();
 		document.querySelector('.keyboard-button').addEventListener('click', () => {
 			this.searchBox.focus();
 			document.querySelector('.keyboard').classList.toggle('keyboard--hidden');
 		});
+
 		this.searchButton.addEventListener('click', this.searchHandler.bind(this));
+
+		document.querySelector('.clear').addEventListener('click', () => {
+			this.searchBox.focus();
+			this.searchBox.value = '';
+		});
 	}
 
 
@@ -30,7 +62,7 @@ class View {
 
 		const movieLink = document.createElement('a');
 		movieLink.classList.add('movie-link');
-		movieLink.setAttribute('href', `${config.movieUrl}${imdbID}`);
+		movieLink.setAttribute('href', `${config.movieUrl}${imdbID}/videogallery`);
 		movieLink.setAttribute('target', '_blank');
 		movieLink.textContent = Title;
 
@@ -79,25 +111,8 @@ class View {
 		}) => {
 			this.drawCard(Title, Year, imdbRating, Poster, imdbID);
 		});
-		const confi = {
-			// type: 'carousel',
-			animationDuration: 600,
-			animationTimingFunc: 'linear',
-			perView: 4,
-			breakpoints: {
-				1200: {
-					perView: 3,
-				},
-				780: {
-					perView: 2,
-				},
-				530: {
-					perView: 1,
-				},
-			},
-		};
-
-		new Glide('.glide', confi).mount();
+		// this.slider.destroy();
+		this.slider.mount();
 	}
 
 	searchHandler() {

@@ -26,7 +26,6 @@ const Keyboard = {
 		capsLock: false,
 	},
 
-
 	init() {
 		// Create main elements
 		this.elements.main = document.createElement('div');
@@ -65,7 +64,7 @@ const Keyboard = {
 
 		const keyLayout = [
 			'`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace',
-			'Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'DEL',
+			'Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'ru / en',
 			'Caps Lock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '`', 'ENTER',
 			'Shift', '\\', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', '↑', 'Shift',
 			'Ctrl', 'Win', 'Alt', 'space', 'Alt', 'Ctrl', '←', '↓', '→',
@@ -73,7 +72,7 @@ const Keyboard = {
 
 		const keyLayoutRus = [
 			'ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace',
-			'Tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '\\', 'DEL',
+			'Tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '\\', 'ru / en',
 			'Caps Lock', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'ENTER',
 			'Shift', '\\', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'ь', 'ю', '.', '↑', 'Shift',
 			'Ctrl', 'Win', 'Alt', 'space', 'Alt', 'Ctrl', '←', '↓', '→',
@@ -192,6 +191,18 @@ const Keyboard = {
 				keyElement.classList.add('keyboard__key');
 
 				switch (key) {
+				case 'ru / en':
+					keyElement.classList.add('keyboard__key--wide', 'lang__button');
+					keyElement.addEventListener('mousedown', () => {
+						keyElement.classList.add('keyboard__key--dark');
+						// e.preventDefault();
+						this.changeLang();
+				        this.renderNewKeyboard();
+					});
+					keyElement.addEventListener('mouseup', () => {
+						keyElement.classList.remove('keyboard__key--dark');
+					});
+					break;
 				case 'Backspace':
 					keyElement.classList.add('keyboard__key--wide');
 					keyElement.innerHTML = createIconHTML('backspace');
@@ -479,15 +490,7 @@ const Keyboard = {
 		this.properties.value = initialValue || '';
 		this.eventHandlers.oninput = oninput;
 		this.eventHandlers.onclose = onclose;
-		// this.elements.main.classList.remove('keyboard--hidden');
 	},
-
-	// close() {
-	// 	this.properties.value = '';
-	// 	this.eventHandlers.oninput = oninput;
-	// 	this.eventHandlers.onclose = onclose;
-	// 	this.elements.main.classList.add('keyboard--hidden');
-	// },
 
 };
 

@@ -2,13 +2,11 @@
 import '@glidejs/glide/dist/css/glide.core.min.css';
 import Controller from './Controller';
 import View from './view/View';
-import Cards from './model/Cards';
+import Model from './model/Model';
 import config from './config';
 
-const cards = new Cards(config.apikey, config.apiUrl, config.movieUrl);
+const model = new Model(config.apikey, config.apiUrl, config.movieUrl);
 
 const view = new View();
 
-new Controller(cards, view);
-
-
+new Controller(model, view);

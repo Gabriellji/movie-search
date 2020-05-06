@@ -22,7 +22,7 @@
     position: fixed;
     right: 0;
     bottom: 0;
-    width: 645px;
+    width: 700px;
     padding: 5px 0;
     background: hsla(4, 100%, 57%, 0.82);
     border-radius: 8px;
@@ -82,6 +82,10 @@
 .keyboard__key--wide {
     width: 12%;
 }
+.lang__button {
+    background: hsla(36, 100%, 57%, 0.82);
+}
+
 .keyboard__key--tight {
     width: 8%;
 }

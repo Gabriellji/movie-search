@@ -1,13 +1,25 @@
 import eventMixin from './mixins/eventMixin';
 
 class Controller {
-	constructor(cards, view) {
+	constructor(model, view) {
 		this.search = '';
 		this.currentPage = 1;
-		this.cards = cards;
+		this.model = model;
 		this.view = view;
-		this.cards.on('downloaded', (() => { this.view.drawCards(this.cards.list); }));
-		this.view.on('requestStart', ((str) => { this.cards.search(str); }));
+		this.model.cards.search('Star wars');
+
+		this.model.on('downloaded', (() => {
+			this.view.drawCards(this.model.cards.list);
+		}));
+		this.view.on('requestStart', ((str) => {
+			this.model.query.queryString = str;
+			const searchStr = this.model.query.queryString;
+			this.model.cards.search(searchStr);
+		}));
+		this.view.on('page-end', () => {
+			const searchStr = this.model.query.queryString;
+			this.model.cards.nextPage(searchStr);
+		});
 	}
 }
 
