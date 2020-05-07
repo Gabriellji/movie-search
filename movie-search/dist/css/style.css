@@ -312,6 +312,21 @@
       justify-content: center;
     }
 
+    .translated_result {
+      display: none;
+      justify-content: center;
+    }
+
+    .api-errors  {
+      display: none;
+      justify-content: center;
+    }
+
+    .api-result {
+      font-size: 20px;
+      color: #fff;
+    }
+
     .not-found_layout .search-result {
       font-size: 20px;
       color: #fff;
@@ -339,9 +354,9 @@
   }
   .lds-ellipsis div {
     position: absolute;
-    top: 33px;
-    width: 13px;
-    height: 13px;
+    top: 14px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     background: #fff;
     animation-timing-function: cubic-bezier(0, 1, 1, 0);

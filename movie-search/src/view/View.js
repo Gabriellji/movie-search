@@ -6,6 +6,7 @@ import config from '../config';
 
 class View {
 	constructor() {
+		this.currentCard = 0;
 		this.searchBox = document.querySelector('.search__input');
 		this.searchButton = document.querySelector('.search__button');
 		this.slidesContainer = document.querySelector('.glide__slides');
@@ -15,9 +16,11 @@ class View {
 
 		this.sliderConfi = {
 			// type: 'carousel',
-			animationDuration: 400,
+			animationDuration: 300,
 			animationTimingFunc: 'linear',
 			perView: 4,
+			rewind: false,
+			bound: true,
 			breakpoints: {
 				1280: {
 					perView: 3,
@@ -33,10 +36,7 @@ class View {
 
 
 		this.slider = new Glide('.glide', this.sliderConfi).mount();
-		this.slider.on('run.end', (() => this.emit('page-end')));
-		// this.slider.on('move.after', (e) => console.log('move.after', e));
-		// this.slider.on('translate.jump', (e) => console.log('translate.jump', e));
-
+		this.slider.on('run', (() => this.nextSlide()));
 
 		this.keyboard.init();
 		document.querySelector('.keyboard-button').addEventListener('click', () => {
@@ -52,8 +52,15 @@ class View {
 		});
 	}
 
+	nextSlide() {
+		this.currentCard += 1;
+		if (this.slider._c.Run.isEnd()) {
+			this.emit('page-end');
+		}
+	}
 
 	drawCard(Title, Year, imdbRating, Poster, imdbID) {
+		this.activeCard += 1;
 		const slideList = document.createElement('li');
 		slideList.classList.add('glide__slide');
 
@@ -104,6 +111,7 @@ class View {
 	}
 
 	drawCards(arrayCards) {
+		this.currentCard = 0;
 		this.slidesContainer.innerHTML = '';
 
 		arrayCards.forEach(({
@@ -111,9 +119,11 @@ class View {
 		}) => {
 			this.drawCard(Title, Year, imdbRating, Poster, imdbID);
 		});
-		// this.slider.destroy();
-		this.slider.mount();
+		this.slider.destroy();
+		this.slider = new Glide('.glide', { ...this.sliderConfi, startAt: this.currentCard }).mount();
+		this.slider.on('run', (() => this.nextSlide()));
 	}
+
 
 	searchHandler() {
 		const searchRequest = this.searchBox.value;

@@ -195,6 +195,7 @@
     /* white-space: nowrap; */
     max-width: 235px;
     min-height: 75px;
+    max-height: 75px;
     text-align: center;
 }
 

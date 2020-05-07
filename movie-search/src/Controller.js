@@ -13,8 +13,10 @@ class Controller {
 		}));
 		this.view.on('requestStart', ((str) => {
 			this.model.query.queryString = str;
-			const searchStr = this.model.query.queryString;
-			this.model.cards.search(searchStr);
+			this.model.query.on('translated', () => {
+				const searchStr = this.model.query.queryString;
+				this.model.cards.search(searchStr, true);
+			});
 		}));
 		this.view.on('page-end', () => {
 			const searchStr = this.model.query.queryString;
