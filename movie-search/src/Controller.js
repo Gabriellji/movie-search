@@ -22,6 +22,15 @@ class Controller {
 			const searchStr = this.model.query.queryString;
 			this.model.cards.nextPage(searchStr);
 		});
+		this.model.cards.on('errors', (str) => {
+			this.view.showApiErrors(str.Error);
+		});
+		this.model.cards.on('undefined', (str) => {
+			this.view.noResultsFound(str.value);
+		});
+		this.model.query.on('show-translated', () => {
+			this.view.showTranslate();
+		});
 	}
 }
 

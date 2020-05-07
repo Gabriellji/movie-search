@@ -14,8 +14,18 @@ class View {
 		this.imageBox = document.querySelector('.movie__box');
 		this.keyboard = Keyboard;
 
+		this.errorsContainer = document.querySelector('.api-errors');
+		this.apiResult = document.querySelector('.api-result');
+
+		this.noResultsBox = document.querySelector('.not-found_title');
+		this.notFoundResults = document.querySelector('.no-result');
+
+		this.spinner = document.querySelector('.spinner-main');
+
+		this.translatedWordsContainer = document.querySelector('.translated_result');
+		this.translated = document.querySelector('.translated-result');
+
 		this.sliderConfi = {
-			// type: 'carousel',
 			animationDuration: 300,
 			animationTimingFunc: 'linear',
 			perView: 4,
@@ -49,6 +59,16 @@ class View {
 		document.querySelector('.clear').addEventListener('click', () => {
 			this.searchBox.focus();
 			this.searchBox.value = '';
+		});
+
+		document.addEventListener('keydown', ((event) => {
+			if (event.code === 'Enter') {
+				this.searchHandler();
+			}
+		}));
+
+		document.querySelector('[data-code="Enter"]').addEventListener('click', () => {
+			this.searchHandler();
 		});
 	}
 
@@ -114,6 +134,8 @@ class View {
 		this.currentCard = 0;
 		this.slidesContainer.innerHTML = '';
 
+		this.spinner.style.display = 'none';
+
 		arrayCards.forEach(({
 			Title, Year, imdbRating, Poster, imdbID,
 		}) => {
@@ -128,6 +150,37 @@ class View {
 	searchHandler() {
 		const searchRequest = this.searchBox.value;
 		this.emit('requestStart', searchRequest);
+		this.spinner.style.display = 'block';
+	}
+
+	showApiErrors(str) {
+		this.spinner.style.display = 'none';
+		this.errorsContainer.style.display = 'unset';
+		this.apiResult.textContent = str;
+		setTimeout(() => {
+			this.errorsContainer.style.display = 'none';
+			this.apiResult.textContent = '';
+		}, 5000);
+	}
+
+	noResultsFound() {
+		this.spinner.style.display = 'none';
+		this.noResultsBox.style.display = 'unset';
+		this.notFoundResults.textContent = this.searchBox.value;
+		setTimeout(() => {
+			this.noResultsBox.style.display = 'none';
+			this.notFoundResults.textContent = '';
+		}, 5000);
+	}
+
+	showTranslate() {
+		this.spinner.style.display = 'none';
+		this.translatedWordsContainer.style.display = 'unset';
+		this.translated.textContent = this.searchBox.value;
+		setTimeout(() => {
+			this.translatedWordsContainer.style.display = 'none';
+			this.translated.textContent = '';
+		}, 5000);
 	}
 }
 

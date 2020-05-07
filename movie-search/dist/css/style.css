@@ -8,9 +8,6 @@
     }
 
     body {
-      /* background: linear-gradient(to bottom, #800000 0%, #cc0000 100%); */
-      /* background: linear-gradient(to bottom, #ffe7e7 0%, #bb810c 100%); */
-          /* background: linear-gradient(to bottom, #000000 0%, #6e1010 100%); */
           background: linear-gradient(to bottom, #000000 0%, #F44336 100%);
     }
 
@@ -19,7 +16,6 @@
     }
 
     .header {
-        /* background: #100503; */
         background: #180605;
         
     }
@@ -168,7 +164,7 @@
       width: 20px;
       height: 20px;
       align-self: center;
-      margin-right: 10px;
+      margin-right: 13px;
     }
 
     #Layer_1 {
@@ -189,18 +185,28 @@
     } */
 
     .keyboard-button {
-        background-image: url(../assets/computer.svg);
+        /* background-image: url(../assets/computer.svg); */
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
         width: 66px;
-        margin-right: 10px;
+        height: 46px;
+        /* margin-right: 10px; */
         cursor: pointer;
         transition: all .25s;
     }
-    
-    .keyboard-button:hover {
-        filter: invert(1);
+
+    .keyboard-button svg {
+      height: 46px;
+    }
+
+    #Layer_9 {
+      fill: #FF9800;
+      transition: all .25s;
+    }
+
+    #Layer_9:hover {
+      fill: #fff;
     }
 
     .search__button {
@@ -337,8 +343,12 @@
       font-weight: 600;
     }
 
+    .no-result {
+      color: #FF9800;
+    }
+
     .spinner-main {
-      display: none;
+      display: block;
     }
 
     .spinner__box {

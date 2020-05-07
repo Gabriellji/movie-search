@@ -10,9 +10,11 @@ class Query {
 	set queryString(value) {
 		if (value.match(/(^[А-я0-9\s]+)(?!.*[A-z])$/)) {
 			this.translated(value);
+			this.emit('show-translated');
 		} else {
 			this.data = value;
 			this.emit('translated');
+			this.off('show-translated');
 		}
 	}
 

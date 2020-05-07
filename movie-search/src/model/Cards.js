@@ -10,28 +10,43 @@ class Cards {
 		this.pageCount = 1;
 		this.list = [];
 		this.downloadCount = 0;
+
+		this.isError = false;
 	}
 
 
 	search(str, update = false) {
 		fetch(`${this.url}?apikey=${this.key}&s=${str}&page=${this.currentPage}`)
-			.then((response) => response.json())
-			.then((result) => {
-				if (update) {
-					this.list = [];
+			.then((response) => {
+				if (!response.ok) {
+					this.isError = true;
 				}
-				this.downloadCount = 0;
-				this.pageCount = Math.floor(result.totalResults / 10);
-				for (let i = 0; i < result.Search.length; i += 1) {
-					fetch(`${this.url}?apikey=${this.key}&i=${result.Search[i].imdbID}`)
-						.then((response) => response.json())
-						.then((res) => {
-							this.list.push(res);
-							this.downloadCount += 1;
-							if (this.downloadCount >= result.Search.length) {
-								this.emit('downloaded');
-							}
-						});
+				return response.json();
+			})
+			.then((result) => {
+				if (result.Error === 'Movie not found!') {
+					this.emit('undefined', result);
+				}
+				if (this.isError) {
+					this.isError = false;
+					this.emit('errors', result);
+				} else {
+					if (update) {
+						this.list = [];
+					}
+					this.downloadCount = 0;
+					this.pageCount = Math.floor(result.totalResults / 10);
+					for (let i = 0; i < result.Search.length; i += 1) {
+						fetch(`${this.url}?apikey=${this.key}&i=${result.Search[i].imdbID}`)
+							.then((response) => response.json())
+							.then((res) => {
+								this.list.push(res);
+								this.downloadCount += 1;
+								if (this.downloadCount >= result.Search.length) {
+									this.emit('downloaded');
+								}
+							});
+					}
 				}
 			});
 	}

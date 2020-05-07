@@ -1,6 +1,8 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable no-shadow */
 
+import eventMixin from '../mixins/eventMixin';
+
 if (localStorage.getItem('lang') === null) {
 	localStorage.setItem('lang', 'en');
 }
@@ -37,6 +39,8 @@ const Keyboard = {
 		this.elements.keysContainer.appendChild(this.createKeys());
 		this.elements.keys = this.elements.keysContainer.querySelectorAll('.keyboard__key');
 
+		this.elements.textarea = document.querySelector('.use-keyboard-input');
+
 		// Add to DOM
 		this.elements.main.appendChild(this.elements.keysContainer);
 		document.body.appendChild(this.elements.main);
@@ -48,6 +52,7 @@ const Keyboard = {
 		document.querySelector('.keyboard').addEventListener('mouseup', () => {
 			document.querySelector('.use-keyboard-input').focus();
 		});
+
 		// Automatically use keyboard for elements with .use-keyboard-input
 		  document.querySelectorAll('.use-keyboard-input').forEach((element) => {
 		    element.addEventListener('focus', () => {
@@ -247,6 +252,8 @@ const Keyboard = {
 
 					keyElement.addEventListener('mouseup', () => {
 						keyElement.classList.remove('keyboard__key--dark');
+						// const searchRequest = document.querySelector('.search__input').value;
+						// this.emit('requestStart', searchRequest).bind(this);
 					});
 
 					break;
@@ -322,13 +329,36 @@ const Keyboard = {
 					});
 
 					break;
-
-				case '↑':
 				case '←':
-				case '↓':
+					keyElement.addEventListener('mousedown', () => {
+						keyElement.classList.add('keyboard__key--dark');
+						this.elements.textarea.selectionStart = this.elements.textarea.selectionStart - 1 >= 0
+						 ? this.elements.textarea.selectionStart - 1 : 0;
+						 this.triggerEvent('oninput');
+					});
+
+					keyElement.addEventListener('mouseup', () => {
+						keyElement.classList.remove('keyboard__key--dark');
+					});
+
+					break;
 				case '→':
 					keyElement.addEventListener('mousedown', () => {
 						keyElement.classList.add('keyboard__key--dark');
+						this.elements.textarea.selectionStart += 1;
+						this.triggerEvent('oninput');
+					});
+
+					keyElement.addEventListener('mouseup', () => {
+						keyElement.classList.remove('keyboard__key--dark');
+					});
+
+					break;
+				case '↓':
+				case '↑':
+					keyElement.addEventListener('mousedown', (e) => {
+						keyElement.classList.add('keyboard__key--dark');
+						e.preventDefault();
 					});
 
 					keyElement.addEventListener('mouseup', () => {
@@ -367,7 +397,6 @@ const Keyboard = {
 			pressedKey.classList.add('keyboard__key--dark');
 			if (event.shiftKey && event.altKey) {
 				this.changeLang();
-				// document.location.reload(true);
 				this.renderNewKeyboard();
 			}
 			if (event.shiftKey && localStorage.getItem('lang') === 'en') {
@@ -493,6 +522,6 @@ const Keyboard = {
 	},
 
 };
-
+Object.assign(eventMixin);
 
 export default Keyboard;
