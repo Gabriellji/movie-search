@@ -6,7 +6,7 @@ import config from '../config';
 class Model {
 	constructor(key, url, movieUrl) {
 		this.cards = new Cards(key, url, movieUrl);
-		this.query = new Query('Star wars', config.translateUrl, config.translateKey);
+		this.query = new Query('Ghost in the Shell', config.translateUrl, config.translateKey);
 		this.cards.on('downloaded', (() => { this.emit('downloaded'); }));
 	}
 }

@@ -2,4 +2,6 @@ export default {
     apikey: '',
     apiUrl: 'http://www.omdbapi.com',
     movieUrl: 'https://www.imdb.com/title/',
+    translateUrl: 'https://translate.yandex.net/api/v1.5/tr.json/translate',
+	translateKey: '',
 }

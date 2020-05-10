@@ -79,7 +79,7 @@ const Keyboard = {
 			'ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace',
 			'Tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '\\', 'ru / en',
 			'Caps Lock', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'ENTER',
-			'Shift', '\\', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'ь', 'ю', '.', '↑', 'Shift',
+			'Shift', '\\', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', '↑', 'Shift',
 			'Ctrl', 'Win', 'Alt', 'space', 'Alt', 'Ctrl', '←', '↓', '→',
 		];
 
@@ -248,12 +248,11 @@ const Keyboard = {
 						keyElement.classList.add('keyboard__key--dark');
 						this.properties.value += '\n';
 						this.triggerEvent('oninput');
+						this.emit('requestStart');
 					});
 
 					keyElement.addEventListener('mouseup', () => {
 						keyElement.classList.remove('keyboard__key--dark');
-						// const searchRequest = document.querySelector('.search__input').value;
-						// this.emit('requestStart', searchRequest).bind(this);
 					});
 
 					break;
@@ -522,6 +521,6 @@ const Keyboard = {
 	},
 
 };
-Object.assign(eventMixin);
+Object.assign(Keyboard, eventMixin);
 
 export default Keyboard;

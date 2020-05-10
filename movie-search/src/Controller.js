@@ -6,16 +6,20 @@ class Controller {
 		this.currentPage = 1;
 		this.model = model;
 		this.view = view;
-		this.model.cards.search('Star wars');
+		this.model.cards.search('Ghost in the Shell');
 
-		this.model.on('downloaded', (() => {
-			this.view.drawCards(this.model.cards.list);
+		this.model.on('downloaded', ((update) => {
+			this.view.drawCards(this.model.cards.list, update);
 		}));
 		this.view.on('requestStart', ((str) => {
 			this.model.query.queryString = str;
+			this.model.query.off('translated');
 			this.model.query.on('translated', () => {
 				const searchStr = this.model.query.queryString;
 				this.model.cards.search(searchStr, true);
+				this.model.query.on('show-translated', (st) => {
+					this.view.showTranslate(st);
+				});
 			});
 		}));
 		this.view.on('page-end', () => {
@@ -28,8 +32,8 @@ class Controller {
 		this.model.cards.on('undefined', (str) => {
 			this.view.noResultsFound(str.value);
 		});
-		this.model.query.on('show-translated', () => {
-			this.view.showTranslate();
+		this.model.query.on('show-translated', (str) => {
+			this.view.showTranslate(str);
 		});
 	}
 }

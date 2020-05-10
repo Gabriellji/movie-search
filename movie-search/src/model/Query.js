@@ -8,13 +8,14 @@ class Query {
 	}
 
 	set queryString(value) {
-		if (value.match(/(^[А-я0-9\s]+)(?!.*[A-z])$/)) {
+		if (value.match(/[а-яё]/gi)) {
 			this.translated(value);
-			this.emit('show-translated');
 		} else {
 			this.data = value;
-			this.emit('translated');
-			this.off('show-translated');
+			setTimeout(() => {
+				this.emit('translated');
+				this.off('show-translated');
+			}, 0);
 		}
 	}
 
@@ -28,6 +29,7 @@ class Query {
 			.then((result) => {
 				this.data = result.text;
 				this.emit('translated');
+				this.emit('show-translated', this.data);
 			});
 	}
 }

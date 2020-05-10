@@ -46,7 +46,7 @@ class View {
 
 
 		this.slider = new Glide('.glide', this.sliderConfi).mount();
-		this.slider.on('run', (() => this.nextSlide()));
+		// this.slider.on('run.end', (() => this.nextSlide()));
 
 		this.keyboard.init();
 		document.querySelector('.keyboard-button').addEventListener('click', () => {
@@ -57,11 +57,11 @@ class View {
 		this.searchButton.addEventListener('click', this.searchHandler.bind(this));
 
 		document.querySelector('.clear').addEventListener('click', () => {
-			this.searchBox.focus();
 			this.searchBox.value = '';
+			this.searchBox.focus();
 		});
 
-		document.addEventListener('keydown', ((event) => {
+		document.addEventListener('keypress', ((event) => {
 			if (event.code === 'Enter') {
 				this.searchHandler();
 			}
@@ -70,6 +70,8 @@ class View {
 		document.querySelector('[data-code="Enter"]').addEventListener('click', () => {
 			this.searchHandler();
 		});
+
+		this.keyboard.on('requestStart', this.searchHandler.bind(this));
 	}
 
 	nextSlide() {
@@ -130,8 +132,10 @@ class View {
 		this.searchBox.focus();
 	}
 
-	drawCards(arrayCards) {
-		this.currentCard = 0;
+	drawCards(arrayCards, img = false) {
+		if (img) {
+			this.currentCard = 0;
+		}
 		this.slidesContainer.innerHTML = '';
 
 		this.spinner.style.display = 'none';
@@ -142,8 +146,8 @@ class View {
 			this.drawCard(Title, Year, imdbRating, Poster, imdbID);
 		});
 		this.slider.destroy();
-		this.slider = new Glide('.glide', { ...this.sliderConfi, startAt: this.currentCard }).mount();
-		this.slider.on('run', (() => this.nextSlide()));
+		this.slider = new Glide('.glide', { ...this.sliderConfi, startAt: this.slider.index }).mount();
+		this.slider.on('run.end', (() => this.nextSlide()));
 	}
 
 
@@ -151,6 +155,8 @@ class View {
 		const searchRequest = this.searchBox.value;
 		this.emit('requestStart', searchRequest);
 		this.spinner.style.display = 'block';
+		this.slider.destroy();
+		this.slider = new Glide('.glide', { ...this.sliderConfi, startAt: this.currentCard = 0 }).mount();
 	}
 
 	showApiErrors(str) {
@@ -160,7 +166,7 @@ class View {
 		setTimeout(() => {
 			this.errorsContainer.style.display = 'none';
 			this.apiResult.textContent = '';
-		}, 5000);
+		}, 7000);
 	}
 
 	noResultsFound() {
@@ -173,14 +179,14 @@ class View {
 		}, 5000);
 	}
 
-	showTranslate() {
+	showTranslate(val) {
 		this.spinner.style.display = 'none';
 		this.translatedWordsContainer.style.display = 'unset';
-		this.translated.textContent = this.searchBox.value;
+		this.translated.textContent = val;
 		setTimeout(() => {
 			this.translatedWordsContainer.style.display = 'none';
 			this.translated.textContent = '';
-		}, 5000);
+		}, 7000);
 	}
 }
 
