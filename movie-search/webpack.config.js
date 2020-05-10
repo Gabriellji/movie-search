@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 const webpack = require('webpack');
 const path = require('path');
 
@@ -33,7 +34,7 @@ module.exports = (env, options) => {
 							loader: 'file-loader',
 						},
 					],
-				},{
+				}, {
 					test: /.css$/i,
 					use: ['style-loader', 'css-loader'],
 				  },
