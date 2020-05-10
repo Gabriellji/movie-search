@@ -72,6 +72,8 @@ class View {
 		});
 
 		this.keyboard.on('requestStart', this.searchHandler.bind(this));
+
+		this.searchBox.focus();
 	}
 
 	nextSlide() {
@@ -129,7 +131,7 @@ class View {
 		if (Poster === 'N/A') {
 			imageBox.style.backgroundImage = "url('./assets/keep.jpg')";
 		}
-		this.searchBox.focus();
+		// this.searchBox.focus();
 	}
 
 	drawCards(arrayCards, img = false) {

@@ -45,20 +45,13 @@ const Keyboard = {
 		this.elements.main.appendChild(this.elements.keysContainer);
 		document.body.appendChild(this.elements.main);
 
-		document.querySelector('.keyboard').addEventListener('mousedown', () => {
-			document.querySelector('.use-keyboard-input').focus();
-		});
-
-		document.querySelector('.keyboard').addEventListener('mouseup', () => {
-			document.querySelector('.use-keyboard-input').focus();
-		});
-
 		// Automatically use keyboard for elements with .use-keyboard-input
 		  document.querySelectorAll('.use-keyboard-input').forEach((element) => {
 		    element.addEventListener('focus', () => {
 		        this.open(element.value, (currentValue) => {
 		            // eslint-disable-next-line no-param-reassign
-		            element.value = currentValue;
+					element.value = currentValue;
+					document.querySelector('.keyboard').focus();
 		        });
 		    });
 		});
