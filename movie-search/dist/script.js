@@ -4272,7 +4272,7 @@ Object.assign(Controller.prototype, _mixins_eventMixin__WEBPACK_IMPORTED_MODULE_
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  apikey: '1ce3cf84',
+  apikey: '340e1521',
   apiUrl: 'https://www.omdbapi.com',
   movieUrl: 'https://www.imdb.com/title/',
   translateUrl: 'https://translate.yandex.net/api/v1.5/tr.json/translate',
