@@ -23,11 +23,11 @@ https://github.com/rolling-scopes-school/tasks/blob/master/tasks/movie-search.md
 - Slider with movie cards
 - Footer
 
-![demo](https://i.imgur.com/Udnuzvh.png)
-
 ### Demo
 
 https://gabriellji-movie-search.netlify.app/
+
+![demo](https://i.imgur.com/Udnuzvh.png)
 
 ### Technology
 - OMDb RESTful API
